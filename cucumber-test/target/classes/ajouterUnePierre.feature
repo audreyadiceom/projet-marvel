@@ -7,7 +7,7 @@ Feature: US_000 Ajouter une Pierre d'Infini
   Afin de savoir si je peux décimer la moitié de la planète
 
   @tag1
-  Scenario Outline: ajout pierre infini avec son nom blabla
+  Scenario Outline: ajout pierre infini avec son nom 
     Given Thanos s approche d une pierre d infini nommée <nom_pierre>
     When Thanos veut la comptabiliser
     Then le compteur de pierres de l'infini de Thanos doit être incrémenté.

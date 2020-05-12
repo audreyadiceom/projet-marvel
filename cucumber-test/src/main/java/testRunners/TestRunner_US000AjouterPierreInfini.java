@@ -5,7 +5,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="resources")
+@CucumberOptions(features="resources/ajouterUnePierre.feature")
 
 public class TestRunner_US000AjouterPierreInfini {
 
