@@ -66,10 +66,15 @@ public class Avenger {
 		 * this.listMechantsAcombattre){ System.out.println(m.getNomMechant()+
 		 * " m"); }
 		 */
+		System.out.println(superMechant.getAvengerAcombattre());
+		System.out.println(superMechant.getNomMechant());
 		if (!this.listMechantsAcombattre.contains(superMechant)) {
 			this.listMechantsAcombattre.add(superMechant);
 
 			if ((superMechant.getAvengerAcombattre() == null) || !superMechant.getAvengerAcombattre().equals(this)) {
+				System.out.println("test");
+				
+				System.out.println(this.getNomAvenger());
 				superMechant.setAvengerAcombattre(this);
 			}
 
