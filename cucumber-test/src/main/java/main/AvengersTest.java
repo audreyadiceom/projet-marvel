@@ -123,6 +123,22 @@ public class AvengersTest {
 		Assert.assertEquals(true, ironMan.getListMechantsAcombattre().contains(thanos));
 
 	}
+	
+	@Test
+	public void testAjouterMechantAcombattre() {
+		SuperMechant mechant_battable = new SuperMechant("mechant_battable");
+		mechant_battable.setNbPierresInfini(3);
+		ironMan.ajouterUnSuperMechant(mechant_battable);
+		Assert.assertEquals(true, ironMan.sauverLeMonde());
+	}
+	@Test
+	public void testAjouterMechantAcombattreImpossible() {
+		SuperMechant mechant_imbattable = new SuperMechant("mechant_imbattable");
+		mechant_imbattable.setNbPierresInfini(6);
+		ironMan.ajouterUnSuperMechant(mechant_imbattable);
+		Assert.assertEquals(false, ironMan.sauverLeMonde());
+
+	}
 
 	/*
 	 * @Test public void testAjoutMechantsAcombattre() { SuperMechant
