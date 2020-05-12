@@ -142,6 +142,6 @@ public class SuperMechant {
 		if (o == null) {
 			return false;
 		}
-		return (this.nbPierresInfini == ((SuperMechant) o).getNbPierresInfini());
+		return (this.nomMechant == ((SuperMechant) o).getNomMechant());
 	}
 }

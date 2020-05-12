@@ -123,7 +123,7 @@ public class AvengersTest {
 		Assert.assertEquals(true, ironMan.getListMechantsAcombattre().contains(thanos));
 
 	}
-	
+
 	@Test
 	public void testAjouterMechantAcombattre() {
 		SuperMechant mechant_battable = new SuperMechant("mechant_battable");
@@ -131,6 +131,7 @@ public class AvengersTest {
 		ironMan.ajouterUnSuperMechant(mechant_battable);
 		Assert.assertEquals(true, ironMan.sauverLeMonde());
 	}
+
 	@Test
 	public void testAjouterMechantAcombattreImpossible() {
 		SuperMechant mechant_imbattable = new SuperMechant("mechant_imbattable");
@@ -140,23 +141,19 @@ public class AvengersTest {
 
 	}
 
-	/*
-	 * @Test public void testAjoutMechantsAcombattre() { SuperMechant
-	 * superMechant = new SuperMechant("superMechant");
-	 * ironMan.ajouterUnSuperMechant(superMechant); Assert.assertEquals(true,
-	 * ironMan.getListMechantsAcombattre().contains(superMechant));
-	 * Assert.assertEquals(ironMan, superMechant.getAvengerAcombattre());
-	 * 
-	 * 
-	 * Avenger blackPanthere = new Avenger();
-	 * superMechant.setAvengerAcombattre(blackPanthere);
-	 * Assert.assertEquals(false,
-	 * ironMan.getListMechantsAcombattre().contains(superMechant));
-	 * Assert.assertEquals(true,
-	 * blackPanthere.getListMechantsAcombattre().contains(superMechant));
-	 * Assert.assertEquals(blackPanthere, superMechant.getAvengerAcombattre());
-	 * }
-	 */
+	@Test
+	public void testAjoutMechantsAcombattre() {
+		SuperMechant superMechant = new SuperMechant("superMechant");
+		ironMan.ajouterUnSuperMechant(superMechant);
+		Assert.assertEquals(true, ironMan.getListMechantsAcombattre().contains(superMechant));
+		Assert.assertEquals(ironMan, superMechant.getAvengerAcombattre());
+
+		Avenger blackPanthere = new Avenger();
+		superMechant.setAvengerAcombattre(blackPanthere);
+		Assert.assertEquals(false, ironMan.getListMechantsAcombattre().contains(superMechant));
+		Assert.assertEquals(true, blackPanthere.getListMechantsAcombattre().contains(superMechant));
+		Assert.assertEquals(blackPanthere, superMechant.getAvengerAcombattre());
+	}
 
 	@After
 	public void tearDown() // throws java.lang.Exception
