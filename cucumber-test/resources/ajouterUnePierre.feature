@@ -7,7 +7,7 @@ Feature: US_000 Ajouter une Pierre d'Infini
 
   Scenario Outline: ajout pierre infini avec son nom 
     Given Thanos s approche d une pierre d infini nommée <nom_pierre>
-    When Thanos veut la comptabiliser
+    When Thanos tente de la comptabiliser
     Then le compteur de pierres de l'infini de Thanos doit être incrémenté.
    
   Examples: 
@@ -18,7 +18,7 @@ Feature: US_000 Ajouter une Pierre d'Infini
 
   Scenario Outline: refus d'ajout de pierre non infini
     Given Thanos s approche d une pierre non d infini nommée <nom_pierre>
-    When Thanos veut la comptabiliser
+    When Thanos tente de la comptabiliser
     Then le compteur de pierre de l infini de Thanosn est pas incrémenté. 
 
     Examples: 

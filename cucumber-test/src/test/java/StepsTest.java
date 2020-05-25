@@ -18,8 +18,8 @@ public class StepsTest {
 		this.nom_pierre = string;
 	}
 
-	@When("Thanos veut la comptabiliser")
-	public void thanos_veut_la_comptabiliser() {
+	@When("Thanos tente de la comptabiliser")
+	public void thanos_tente_de_la_comptabiliser() {
 		this.thanos.ajouterPierreInfini(nom_pierre);
 	}
 
