@@ -7,7 +7,7 @@ import cucumber.api.java.en.When;
 import main.SuperMechant;
 
 public class StepsTest {
-	private SuperMechant thanos;
+	private marvel.SuperMechant thanos;
 	private String nom_pierre;
 	private int nbPierre;
 
