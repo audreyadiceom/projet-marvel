@@ -62,8 +62,8 @@ public class AvengersTest {
 	public void setUp() // throws java.lang.Exception
 	{
 		// listMechantsAbattre = new ArrayList<SuperMechant>();
-		ebonyMaw = new SuperMechant("ebonyMaw",0,"");
-		thanos = new SuperMechant("thanos",4,"");
+		ebonyMaw = new SuperMechant("ebonyMaw",0,"Terre");
+		thanos = new SuperMechant("thanos",4,"Terre");
 
 		ironMan = new Avenger("ironMan");
 		ironMan.setNbPierresInfini(1);
@@ -129,22 +129,24 @@ public class AvengersTest {
 
 	@Test
 	public void testAjouterMechantAcombattre() {
-		SuperMechant mechant_battable = new SuperMechant("mechant_battable",3,"");
+		SuperMechant mechant_battable = new SuperMechant("mechant_battable",3,"Terre");
 		ironMan.ajouterUnSuperMechant(mechant_battable);
 		Assert.assertEquals(true, ironMan.sauverLeMonde());
 	}
 
 	@Test
 	public void testAjouterMechantAcombattreImpossible() {
-		SuperMechant mechant_imbattable = new SuperMechant("mechant_imbattable",6,"");
+		SuperMechant mechant_imbattable = new SuperMechant("mechant_imbattable",6,"Terre");
 		ironMan.ajouterUnSuperMechant(mechant_imbattable);
 		Assert.assertEquals(false, ironMan.sauverLeMonde());
-
+		SuperMechant mechante_non_terre=new SuperMechant("mechant_imbattable",0,"Ego");
+		ironMan.ajouterUnSuperMechant(mechante_non_terre);
+		Assert.assertEquals(false, ironMan.sauverLeMonde());
 	}
 
 	@Test
 	public void testRemplacerMechantsAcombattre() {
-		SuperMechant superMechant = new SuperMechant("superMechant",0,"");
+		SuperMechant superMechant = new SuperMechant("superMechant",0,"Terre");
 		ironMan.ajouterUnSuperMechant(superMechant);
 		Assert.assertEquals(true, ironMan.getListMechantsAcombattre().contains(superMechant));
 		Assert.assertEquals(ironMan, superMechant.getSuperHeroAcombattre());

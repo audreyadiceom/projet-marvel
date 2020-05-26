@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author audrey_adiceom
  * @version 08/05/2020
  */
-public class SuperMechant {
+public class SuperMechant extends Personnage{
 	// Création des attributs du super méchant
 	private String nomMechant = "";
 	private int nbPierresInfini = 0;// les pierres de l'infini sont cachées dans la galaxie. Elles ont chacune 
@@ -89,7 +89,7 @@ public class SuperMechant {
 	}
 
 	// Methodes qui manipulent les attributs
-	public void ajouterPierreInfini(String pierre) {
+	public boolean ajouterPierreInfini(String pierre) {
 		if (this.nbPierresInfini < 6) {// si le mechant n'a pas deja toutes les
 										// pierres
 			if (pierre.equals("Espace") || pierre.equals("Réalité") || pierre.equals("Pouvoir")
@@ -97,6 +97,7 @@ public class SuperMechant {
 				this.nbPierresInfini++;
 			}
 		}
+		return situationFinDuMonde();
 	}
 
 	public boolean situationFinDuMonde() {

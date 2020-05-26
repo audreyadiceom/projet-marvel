@@ -60,8 +60,8 @@ public class SuperMechantTest {
 		thanos = new SuperMechant("thanos",3,"Terre");
 		ironMan = new Avenger("ironMan");
 		thanos.setAvengerAcombattre(ironMan);
-		loki = new SuperMechant("loki",0,"");
-		joker = new SuperMechant("joker",1,"gotam");
+		loki = new SuperMechant("loki",0,"Planet");
+		joker = new SuperMechant("joker",1,"Terre");
 
 	}
 
