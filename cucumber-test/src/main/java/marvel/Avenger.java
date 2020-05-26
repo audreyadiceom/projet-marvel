@@ -11,11 +11,11 @@ import javax.swing.plaf.synth.SynthSeparatorUI;
  * @author (votre nom)
  * @version (un numéro de version ou une date)
  */
-public class Avenger {
+public class Avenger extends SuperHero{
 	// variables d'instance
 	private String nomAvenger = "";
 	private int nbPierresInfini = 0;
-	private ArrayList<SuperMechant> listMechantsAcombattre = new ArrayList<SuperMechant>();
+	private ArrayList<SuperMechant> listMechantsAcombattre;
 
 	/**
 	 * Constructeur d'objets de classe Avengers
@@ -65,7 +65,7 @@ public class Avenger {
 		if (!this.listMechantsAcombattre.contains(superMechant)) {
 			this.listMechantsAcombattre.add(superMechant);
 
-			if ((superMechant.getAvengerAcombattre() == null) || !superMechant.getAvengerAcombattre().equals(this)) {
+			if ((superMechant.getSuperHeroAcombattre() == null) || !superMechant.getSuperHeroAcombattre().equals(this)) {
 				superMechant.setAvengerAcombattre(this);
 			}
 

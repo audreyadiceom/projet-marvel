@@ -57,12 +57,11 @@ public class SuperMechantTest {
 	public void setUp() // throws java.lang.Exception
 	{
 
-		thanos = new SuperMechant("thanos");
-		thanos.setNbPierresInfini(3);
+		thanos = new SuperMechant("thanos",3,"Terre");
 		ironMan = new Avenger("ironMan");
 		thanos.setAvengerAcombattre(ironMan);
-		loki = new SuperMechant("loki");
-		joker = new SuperMechant(1);
+		loki = new SuperMechant("loki",0,"");
+		joker = new SuperMechant("joker",1,"gotam");
 
 	}
 
@@ -108,11 +107,11 @@ public class SuperMechantTest {
 
 	@Test
 	public void testAvengersAcombattre() {
-		assertEquals(ironMan, thanos.getAvengerAcombattre());
+		assertEquals(ironMan, thanos.getSuperHeroAcombattre());
 		Assert.assertEquals(true, ironMan.getListMechantsAcombattre().contains(thanos));
 		Avenger odin = new Avenger("odin");
 		thanos.setAvengerAcombattre(odin);
-		assertEquals(odin, thanos.getAvengerAcombattre());
+		assertEquals(odin, thanos.getSuperHeroAcombattre());
 		Assert.assertEquals(true, odin.getListMechantsAcombattre().contains(thanos));
 		Assert.assertEquals(false, ironMan.getListMechantsAcombattre().contains(thanos));
 
@@ -120,7 +119,7 @@ public class SuperMechantTest {
 
 	@Test
 	public void testEquals() {
-		SuperMechant thanos2 = new SuperMechant("thanos");
+		SuperMechant thanos2 = new SuperMechant("thanos",0,"Terre");
 		thanos2.setNbPierresInfini(3);
 		Assert.assertEquals(thanos, thanos2);
 		Assert.assertNotNull(thanos);

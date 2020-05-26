@@ -14,7 +14,7 @@ public class StepsAjouterMechant {
 	@Given("{string} se rend compte que {string} veut détruire le monde")
 	public void se_rend_compte_que_veut_détruire_le_monde(String string, String string2) {
 		this.avenger = new Avenger(string);
-		this.superMechant = new SuperMechant(string2);
+		this.superMechant = new SuperMechant(string2,0,"");
 	}
 
 	@When("Le {int} est inférieur à {int}")

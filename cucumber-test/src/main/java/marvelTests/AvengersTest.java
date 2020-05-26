@@ -62,9 +62,8 @@ public class AvengersTest {
 	public void setUp() // throws java.lang.Exception
 	{
 		// listMechantsAbattre = new ArrayList<SuperMechant>();
-		ebonyMaw = new SuperMechant("ebonyMaw");
-		thanos = new SuperMechant("thanos");
-		thanos.setNbPierresInfini(4);
+		ebonyMaw = new SuperMechant("ebonyMaw",0,"");
+		thanos = new SuperMechant("thanos",4,"");
 
 		ironMan = new Avenger("ironMan");
 		ironMan.setNbPierresInfini(1);
@@ -121,8 +120,8 @@ public class AvengersTest {
 
 	@Test
 	public void testMechantsAcombattre() {
-		Assert.assertEquals(ironMan, ebonyMaw.getAvengerAcombattre());
-		Assert.assertEquals(ironMan, thanos.getAvengerAcombattre());
+		Assert.assertEquals(ironMan, ebonyMaw.getSuperHeroAcombattre());
+		Assert.assertEquals(ironMan, thanos.getSuperHeroAcombattre());
 		Assert.assertEquals(true, ironMan.getListMechantsAcombattre().contains(ebonyMaw));
 		Assert.assertEquals(true, ironMan.getListMechantsAcombattre().contains(thanos));
 
@@ -130,16 +129,14 @@ public class AvengersTest {
 
 	@Test
 	public void testAjouterMechantAcombattre() {
-		SuperMechant mechant_battable = new SuperMechant("mechant_battable");
-		mechant_battable.setNbPierresInfini(3);
+		SuperMechant mechant_battable = new SuperMechant("mechant_battable",3,"");
 		ironMan.ajouterUnSuperMechant(mechant_battable);
 		Assert.assertEquals(true, ironMan.sauverLeMonde());
 	}
 
 	@Test
 	public void testAjouterMechantAcombattreImpossible() {
-		SuperMechant mechant_imbattable = new SuperMechant("mechant_imbattable");
-		mechant_imbattable.setNbPierresInfini(6);
+		SuperMechant mechant_imbattable = new SuperMechant("mechant_imbattable",6,"");
 		ironMan.ajouterUnSuperMechant(mechant_imbattable);
 		Assert.assertEquals(false, ironMan.sauverLeMonde());
 
@@ -147,16 +144,16 @@ public class AvengersTest {
 
 	@Test
 	public void testRemplacerMechantsAcombattre() {
-		SuperMechant superMechant = new SuperMechant("superMechant");
+		SuperMechant superMechant = new SuperMechant("superMechant",0,"");
 		ironMan.ajouterUnSuperMechant(superMechant);
 		Assert.assertEquals(true, ironMan.getListMechantsAcombattre().contains(superMechant));
-		Assert.assertEquals(ironMan, superMechant.getAvengerAcombattre());
+		Assert.assertEquals(ironMan, superMechant.getSuperHeroAcombattre());
 
 		Avenger blackPanthere = new Avenger();
 		superMechant.setAvengerAcombattre(blackPanthere);
 		Assert.assertEquals(false, ironMan.getListMechantsAcombattre().contains(superMechant));
 		Assert.assertEquals(true, blackPanthere.getListMechantsAcombattre().contains(superMechant));
-		Assert.assertEquals(blackPanthere, superMechant.getAvengerAcombattre());
+		Assert.assertEquals(blackPanthere, superMechant.getSuperHeroAcombattre());
 
 	}
 
