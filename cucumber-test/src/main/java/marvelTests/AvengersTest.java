@@ -9,37 +9,16 @@ import org.junit.Test;
 
 import marvel.Avenger;
 import marvel.SuperMechant;
+import sauvetage.Planete;
 
-import java.util.Arrays;
 
-/**
- * Classe-test AvengersTest.
- *
- * @author (votre nom)
- * @version (un numéro de version ou une date)
- *
- *          Les classes-test sont documentées ici :
- *          http://junit.sourceforge.net/javadoc/junit/framework/TestCase.html
- *          et sont basées sur le document Š 2002 Robert A. Ballance intitulé
- *          "JUnit: Unit Testing Framework".
- *
- *          Les objets Test (et TestSuite) sont associés aux classes à tester
- *          par la simple relation yyyTest (e.g. qu'un Test de la classe
- *          Name.java se nommera NameTest.java); les deux se retrouvent dans le
- *          męme paquetage. Les "engagements" (anglais : "fixture") forment un
- *          ensemble de conditions qui sont vraies pour chaque méthode Test à
- *          exécuter. Il peut y avoir plus d'une méthode Test dans une classe
- *          Test; leur ensemble forme un objet TestSuite. BlueJ découvrira
- *          automatiquement (par introspection) les méthodes Test de votre
- *          classe Test et générera la TestSuite conséquente. Chaque appel d'une
- *          méthode Test sera précédé d'un appel de setUp(), qui réalise les
- *          engagements, et suivi d'un appel à tearDown(), qui les détruit.
- */
+
 public class AvengersTest {
 	private SuperMechant thanos;
 	private SuperMechant ebonyMaw;
 	private Avenger ironMan;
-	private ArrayList<SuperMechant> listMechantsAbattre;
+	private Planete terre;
+	
 
 	// Définissez ici les variables d'instance nécessaires à vos engagements;
 	// Vous pouvez également les saisir automatiquement du présentoir
@@ -62,13 +41,14 @@ public class AvengersTest {
 	public void setUp() // throws java.lang.Exception
 	{
 		// listMechantsAbattre = new ArrayList<SuperMechant>();
-		ebonyMaw = new SuperMechant("ebonyMaw",0,"Terre");
-		thanos = new SuperMechant("thanos",4,"Terre");
+		ebonyMaw = new SuperMechant("ebonyMaw",0);
+		thanos = new SuperMechant("thanos",4);
 
 		ironMan = new Avenger("ironMan");
 		ironMan.setNbPierresInfini(1);
 		ironMan.ajouterUnSuperMechant(ebonyMaw);
 		ironMan.ajouterUnSuperMechant(thanos);
+		terre = new Planete("Terre");
 	}
 
 	/**
@@ -84,7 +64,8 @@ public class AvengersTest {
 
 	@Test
 	public void testSauverMonde() {
-		assertEquals(true, ironMan.sauverLeMonde());
+		Planete p = new Planete("Terre");
+		assertEquals(true, ironMan.sauverLeMonde(p));
 	}
 
 	@Test
@@ -120,8 +101,8 @@ public class AvengersTest {
 
 	@Test
 	public void testMechantsAcombattre() {
-		Assert.assertEquals(ironMan, ebonyMaw.getSuperHeroAcombattre());
-		Assert.assertEquals(ironMan, thanos.getSuperHeroAcombattre());
+		Assert.assertEquals(ironMan, ebonyMaw.getAvengerAcombattre());
+		Assert.assertEquals(ironMan, thanos.getAvengerAcombattre());
 		Assert.assertEquals(true, ironMan.getListMechantsAcombattre().contains(ebonyMaw));
 		Assert.assertEquals(true, ironMan.getListMechantsAcombattre().contains(thanos));
 
@@ -129,33 +110,37 @@ public class AvengersTest {
 
 	@Test
 	public void testAjouterMechantAcombattre() {
-		SuperMechant mechant_battable = new SuperMechant("mechant_battable",3,"Terre");
+		SuperMechant mechant_battable = new SuperMechant("mechant_battable",3);
+		mechant_battable.setPlaneteAcombattre(terre);
 		ironMan.ajouterUnSuperMechant(mechant_battable);
-		Assert.assertEquals(true, ironMan.sauverLeMonde());
+		Assert.assertEquals(true, ironMan.sauverLeMonde(mechant_battable.getPlaneteAcombattre()));
 	}
 
 	@Test
 	public void testAjouterMechantAcombattreImpossible() {
-		SuperMechant mechant_imbattable = new SuperMechant("mechant_imbattable",6,"Terre");
+		
+		SuperMechant mechant_imbattable = new SuperMechant("mechant_imbattable",6);
+		mechant_imbattable.setPlaneteAcombattre(terre);
 		ironMan.ajouterUnSuperMechant(mechant_imbattable);
-		Assert.assertEquals(false, ironMan.sauverLeMonde());
-		SuperMechant mechante_non_terre=new SuperMechant("mechant_imbattable",0,"Ego");
+		Assert.assertEquals(false, ironMan.sauverLeMonde(mechant_imbattable.getPlaneteAcombattre()));
+		SuperMechant mechante_non_terre=new SuperMechant("mechant_imbattable",0);
+		mechante_non_terre.setPlaneteAcombattre(new Planete("Xandar"));
 		ironMan.ajouterUnSuperMechant(mechante_non_terre);
-		Assert.assertEquals(false, ironMan.sauverLeMonde());
+		Assert.assertEquals(false, ironMan.sauverLeMonde(mechante_non_terre.getPlaneteAcombattre()));
 	}
 
 	@Test
 	public void testRemplacerMechantsAcombattre() {
-		SuperMechant superMechant = new SuperMechant("superMechant",0,"Terre");
+		SuperMechant superMechant = new SuperMechant("superMechant",0);
 		ironMan.ajouterUnSuperMechant(superMechant);
 		Assert.assertEquals(true, ironMan.getListMechantsAcombattre().contains(superMechant));
-		Assert.assertEquals(ironMan, superMechant.getSuperHeroAcombattre());
+		Assert.assertEquals(ironMan, superMechant.getAvengerAcombattre());
 
 		Avenger blackPanthere = new Avenger();
 		superMechant.setAvengerAcombattre(blackPanthere);
 		Assert.assertEquals(false, ironMan.getListMechantsAcombattre().contains(superMechant));
 		Assert.assertEquals(true, blackPanthere.getListMechantsAcombattre().contains(superMechant));
-		Assert.assertEquals(blackPanthere, superMechant.getSuperHeroAcombattre());
+		Assert.assertEquals(blackPanthere, superMechant.getAvengerAcombattre());
 
 	}
 

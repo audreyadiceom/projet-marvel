@@ -3,7 +3,7 @@ package marvel;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
+import sauvetage.Planete;
 
 /**
  * Décrivez votre classe Avengers ici.
@@ -11,7 +11,7 @@ import javax.swing.plaf.synth.SynthSeparatorUI;
  * @author (votre nom)
  * @version (un numéro de version ou une date)
  */
-public class Avenger extends SuperHero {
+public class Avenger  {
 	// variables d'instance
 	private String nomAvenger = "";
 	private int nbPierresInfini = 0;
@@ -65,8 +65,8 @@ public class Avenger extends SuperHero {
 		if (!this.listMechantsAcombattre.contains(superMechant)) {
 			this.listMechantsAcombattre.add(superMechant);
 
-			if ((superMechant.getSuperHeroAcombattre() == null)
-					|| !superMechant.getSuperHeroAcombattre().equals(this)) {
+			if ((superMechant.getAvengerAcombattre() == null)
+					|| !superMechant.getAvengerAcombattre().equals(this)) {
 				superMechant.setAvengerAcombattre(this);
 			}
 
@@ -79,15 +79,15 @@ public class Avenger extends SuperHero {
 		}
 	}
 
-	public boolean sauverLeMonde() {
+	public boolean sauverLeMonde(Planete planeteAsauver) {
+		if (!planeteAsauver.getNomPlanete().equals("Terre")) {
+			return false;
+		}
 		for (SuperMechant mechant : this.listMechantsAcombattre) {
-			if (mechant.situationFinDuMonde()) {// si au moins 1 mechant a
-												// toutes les pierres
+			if (mechant.decimerLeMonde()) {// si au moins 1 mechant a toutes les pierres
 				return false;// on ne peut plus sauver le monde
 			}
-			if (!mechant.getPlaneteAdecimer().equals("Terre")) {
-				return false;
-			}
+			
 		}
 		return true;
 	}
@@ -99,9 +99,9 @@ public class Avenger extends SuperHero {
 		return (this.nomAvenger == ((Avenger) o).getNomAvenger());
 	}
 
-	@Override
+	
 	boolean ajouterPierreInfini(String pierre) {
-		if (this.nbPierresInfini < 6) {// si le mechant n'a pas deja toutes les
+		if (this.nbPierresInfini < 6) {// si le super hero n'a pas deja toutes les
 			// pierres
 			if (pierre.equals("Espace") || pierre.equals("Réalité") || pierre.equals("Pouvoir")
 					|| pierre.equals("Esprit") || pierre.equals("Temps") || pierre.equals("Âme")) {

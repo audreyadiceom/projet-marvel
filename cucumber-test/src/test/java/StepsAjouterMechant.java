@@ -5,6 +5,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import marvel.Avenger;
 import marvel.SuperMechant;
+import sauvetage.Planete;
 
 public class StepsAjouterMechant {
 
@@ -14,7 +15,7 @@ public class StepsAjouterMechant {
 	@Given("{string} se rend compte que {string} veut détruire le monde")
 	public void se_rend_compte_que_veut_détruire_le_monde(String string, String string2) {
 		this.avenger = new Avenger(string);
-		this.superMechant = new SuperMechant(string2,0,"");
+		this.superMechant = new SuperMechant(string2,0);
 	}
 
 	@When("Le {int} est inférieur à {int}")
@@ -31,7 +32,7 @@ public class StepsAjouterMechant {
 
 	@Then("Le monde est sauvé")
 	public void le_monde_est_sauvé() {
-		assertEquals(true, this.avenger.sauverLeMonde());
+		assertEquals(true, this.avenger.sauverLeMonde(new Planete("Terre")));
 	}
 
 	@When("Le {int} est égal à {int}")
@@ -42,7 +43,7 @@ public class StepsAjouterMechant {
 
 	@Then("Le monde n'est pas_sauvé")
 	public void le_monde_n_est_pas_sauvé() {
-		assertEquals(false, this.avenger.sauverLeMonde());
+		assertEquals(false, this.avenger.sauverLeMonde(new Planete("Terre")));
 	}
 
 }

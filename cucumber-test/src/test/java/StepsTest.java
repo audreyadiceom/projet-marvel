@@ -13,7 +13,7 @@ public class StepsTest {
 
 	@Given("Thanos s approche d une pierre d infini nommée {string}")
 	public void thanos_s_approche_d_une_pierre_d_infini_nommée(String string) {
-		this.thanos = new SuperMechant("Thanos",0,"");
+		this.thanos = new SuperMechant("Thanos",0);
 		this.nbPierre = thanos.getNbPierresInfini();
 		this.nom_pierre = string;
 	}
