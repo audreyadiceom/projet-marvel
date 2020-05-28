@@ -46,6 +46,9 @@ public class SuperMechant extends Personnage{
 
 	public void setNbPierresInfini(int nbPierresInfini) {
 		this.nbPierresInfini = nbPierresInfini;
+		if (this.nbPierresInfini == 6) {
+			this.isFinDuMonde = true;
+		}
 	}
 
 	public boolean getIsFinDuMonde() {
@@ -63,16 +66,24 @@ public class SuperMechant extends Personnage{
 		return planeteAcombattre;
 	}
 
-	public void setPlaneteAcombattre(Planete planeteAcombattre) {
+	public void ajouterPlaneteAcombattre(Planete planeteAcombattre) {
+	
 		if (this.planeteAcombattre == (null)){
 			this.planeteAcombattre = planeteAcombattre;
+			this.planeteAcombattre.ajouterSuperMechant(this);
 		}
 		if (!(this.planeteAcombattre.equals(planeteAcombattre))) { 						 
-			this.planeteAcombattre.setMechant(null);	
+			this.planeteAcombattre.supprimerSuperMechant();	
 			this.planeteAcombattre = planeteAcombattre;
+			this.planeteAcombattre.ajouterSuperMechant(this);
 		}
 		
 	}
+	public void supprimerPlaneteAcombattre() {
+		this.planeteAcombattre = null;
+	}
+	
+	
 	public Avenger getAvengerAcombattre() {
 		return this.avengerAcombattre;
 	}

@@ -83,6 +83,7 @@ public class Avenger  {
 		if (!planeteAsauver.getNomPlanete().equals("Terre")) {
 			return false;
 		}
+		ajouterUnSuperMechant(planeteAsauver.getMechant());
 		for (SuperMechant mechant : this.listMechantsAcombattre) {
 			if (mechant.decimerLeMonde()) {// si au moins 1 mechant a toutes les pierres
 				return false;// on ne peut plus sauver le monde
@@ -100,7 +101,7 @@ public class Avenger  {
 	}
 
 	
-	boolean ajouterPierreInfini(String pierre) {
+	public boolean ajouterPierreInfini(String pierre) {
 		if (this.nbPierresInfini < 6) {// si le super hero n'a pas deja toutes les
 			// pierres
 			if (pierre.equals("Espace") || pierre.equals("Réalité") || pierre.equals("Pouvoir")

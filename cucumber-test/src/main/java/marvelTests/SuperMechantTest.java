@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import marvel.Avenger;
 import marvel.SuperMechant;
+import sauvetage.Planete;
 
 
 public class SuperMechantTest {
@@ -40,17 +41,7 @@ public class SuperMechantTest {
 
 	}
 
-	/**
-	 * Supprime les engagements
-	 *
-	 * Méthode appelée après chaque appel de méthode de test.
-	 */
-	@After
-	public void tearDown() // throws java.lang.Exception
-	{
-		// Libérez ici les ressources engagées par setUp()
-	}
-
+	
 	@Test
 	public void testNbPierresInfini() {
 		assertEquals(3, thanos.getNbPierresInfini());
@@ -120,4 +111,38 @@ public class SuperMechantTest {
 		thanos.ajouterPierreInfini("Pizza");
 		assertEquals(nbPierre, thanos.getNbPierresInfini());
 	}
+	
+	@Test
+	public void testPlanete() {
+		Planete p = new Planete("toto");
+		thanos.ajouterPlaneteAcombattre(p);
+		assertEquals(p, thanos.getPlaneteAcombattre());
+		Planete p2 = new Planete("titi");
+		thanos.ajouterPlaneteAcombattre(p2);
+		assertEquals(p2, thanos.getPlaneteAcombattre());
+		thanos.supprimerPlaneteAcombattre();
+		assertEquals(null, thanos.getPlaneteAcombattre());
+		
+	}
+	@Test
+	public void testEqual() {
+		SuperMechant m = null;
+		assertEquals(false, thanos.equals(m));
+		SuperMechant twin = new SuperMechant(thanos.getNomMechant(),thanos.getNbPierresInfini());
+		assertEquals(true, thanos.equals(twin));
+		SuperMechant notwin = new SuperMechant(thanos.getNomMechant(),thanos.getNbPierresInfini()+1);
+		assertEquals(false, thanos.equals(notwin));
+	}
+	
+	/**
+	 * Supprime les engagements
+	 *
+	 * Méthode appelée après chaque appel de méthode de test.
+	 */
+	@After
+	public void tearDown() // throws java.lang.Exception
+	{
+		// Libérez ici les ressources engagées par setUp()
+	}
+
 }

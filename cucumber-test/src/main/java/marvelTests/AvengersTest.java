@@ -65,6 +65,7 @@ public class AvengersTest {
 	@Test
 	public void testSauverMonde() {
 		Planete p = new Planete("Terre");
+		p.ajouterSuperMechant(thanos);
 		assertEquals(true, ironMan.sauverLeMonde(p));
 	}
 
@@ -111,7 +112,7 @@ public class AvengersTest {
 	@Test
 	public void testAjouterMechantAcombattre() {
 		SuperMechant mechant_battable = new SuperMechant("mechant_battable",3);
-		mechant_battable.setPlaneteAcombattre(terre);
+		mechant_battable.ajouterPlaneteAcombattre(terre);
 		ironMan.ajouterUnSuperMechant(mechant_battable);
 		Assert.assertEquals(true, ironMan.sauverLeMonde(mechant_battable.getPlaneteAcombattre()));
 	}
@@ -120,11 +121,11 @@ public class AvengersTest {
 	public void testAjouterMechantAcombattreImpossible() {
 		
 		SuperMechant mechant_imbattable = new SuperMechant("mechant_imbattable",6);
-		mechant_imbattable.setPlaneteAcombattre(terre);
+		mechant_imbattable.ajouterPlaneteAcombattre(terre);
 		ironMan.ajouterUnSuperMechant(mechant_imbattable);
 		Assert.assertEquals(false, ironMan.sauverLeMonde(mechant_imbattable.getPlaneteAcombattre()));
 		SuperMechant mechante_non_terre=new SuperMechant("mechant_imbattable",0);
-		mechante_non_terre.setPlaneteAcombattre(new Planete("Xandar"));
+		mechante_non_terre.ajouterPlaneteAcombattre(new Planete("Xandar"));
 		ironMan.ajouterUnSuperMechant(mechante_non_terre);
 		Assert.assertEquals(false, ironMan.sauverLeMonde(mechante_non_terre.getPlaneteAcombattre()));
 	}
@@ -142,6 +143,20 @@ public class AvengersTest {
 		Assert.assertEquals(true, blackPanthere.getListMechantsAcombattre().contains(superMechant));
 		Assert.assertEquals(blackPanthere, superMechant.getAvengerAcombattre());
 
+	}
+	@Test
+	public void testAjoutPierre() {
+		int n = ironMan.getNbPierresInfini();
+		ironMan.ajouterPierreInfini("Âme");
+		assertTrue(n+1 == ironMan.getNbPierresInfini());
+		ironMan.setNbPierresInfini(5);
+		boolean ajout = ironMan.ajouterPierreInfini("Espace");
+		assertEquals(true, ajout);
+		Avenger a = null;
+		assertEquals(false, ironMan.equals(a));
+				
+		
+		
 	}
 
 	@After
