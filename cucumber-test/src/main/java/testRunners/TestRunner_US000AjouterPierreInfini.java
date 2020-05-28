@@ -8,6 +8,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(features="src/main/resources/ajouterUnePierre.feature")
 
 public class TestRunner_US000AjouterPierreInfini {
+	
+	
 
 
 }

@@ -1,3 +1,5 @@
+package testRunners;
+
 import static org.junit.Assert.assertEquals;
 
 import cucumber.api.java.en.Given;
@@ -15,7 +17,7 @@ public class StepsAjouterMechant {
 	@Given("{string} se rend compte que {string} veut détruire le monde")
 	public void se_rend_compte_que_veut_détruire_le_monde(String string, String string2) {
 		this.avenger = new Avenger(string);
-		this.superMechant = new SuperMechant(string2,0);
+		this.superMechant = new SuperMechant(string2, 0);
 	}
 
 	@When("Le {int} est inférieur à {int}")
@@ -41,11 +43,4 @@ public class StepsAjouterMechant {
 		assertEquals(true, (int1 == int2));
 	}
 
-	@Then("Le monde n'est pas_sauvé")
-	public void le_monde_n_est_pas_sauvé() {
-		assertEquals(false, this.avenger.sauverLeMonde(new Planete("Terre")));
-	}
-
 }
-
-

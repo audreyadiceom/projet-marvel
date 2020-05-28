@@ -1,3 +1,4 @@
+package testRunners;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,14 +7,14 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import marvel.SuperMechant;
 
-public class StepsTest {
+public class StepsAjouterPierre {
 	private SuperMechant thanos;
 	private String nom_pierre;
 	private int nbPierre;
 
 	@Given("Thanos s approche d une pierre d infini nommée {string}")
 	public void thanos_s_approche_d_une_pierre_d_infini_nommée(String string) {
-		this.thanos = new SuperMechant("Thanos",0);
+		this.thanos = new SuperMechant("Thanos", 0);
 		this.nbPierre = thanos.getNbPierresInfini();
 		this.nom_pierre = string;
 	}
@@ -30,7 +31,7 @@ public class StepsTest {
 
 	@Given("Thanos s approche d une pierre non d infini nommée {string}")
 	public void thanos_s_approche_d_une_pierre_non_d_infini_nommée(String string) {
-		this.thanos = new SuperMechant("Thanos",0);
+		this.thanos = new SuperMechant("Thanos", 0);
 		this.nbPierre = this.thanos.getNbPierresInfini();
 		this.nom_pierre = string;
 	}
@@ -39,7 +40,5 @@ public class StepsTest {
 	public void le_compteur_de_pierre_de_l_infini_de_Thanosn_est_pas_incrémenté() {
 		assertEquals(this.nbPierre, this.thanos.getNbPierresInfini());
 	}
-	
-	
 
 }
