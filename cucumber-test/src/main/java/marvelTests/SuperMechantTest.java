@@ -1,6 +1,5 @@
 package marvelTests;
 
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Assert;
@@ -9,7 +8,6 @@ import org.junit.Test;
 import marvel.Avenger;
 import marvel.SuperMechant;
 import sauvetage.Planete;
-
 
 public class SuperMechantTest {
 
@@ -33,15 +31,14 @@ public class SuperMechantTest {
 	public void setUp() // throws java.lang.Exception
 	{
 
-		thanos = new SuperMechant("thanos",3);
+		thanos = new SuperMechant("thanos", 3);
 		ironMan = new Avenger("ironMan");
 		thanos.setAvengerAcombattre(ironMan);
-		loki = new SuperMechant("loki",0);
-		joker = new SuperMechant("joker",1);
+		loki = new SuperMechant("loki", 0);
+		joker = new SuperMechant("joker", 1);
 
 	}
 
-	
 	@Test
 	public void testNbPierresInfini() {
 		assertEquals(3, thanos.getNbPierresInfini());
@@ -54,20 +51,13 @@ public class SuperMechantTest {
 	}
 
 	@Test
-	public void testNomMechant() {
-		SuperMechant mechant = new SuperMechant();
-		mechant.setNomMechant("Jean");
-		assertEquals("Jean", mechant.getNomMechant());
-	}
-
-	@Test
 	public void testIsFinDuMonde() {
 		assertEquals(false, thanos.getIsFinDuMonde());
 	}
 
 	@Test
 	public void testSituationMonde() {
-		SuperMechant superMec1 = new SuperMechant();
+		SuperMechant superMec1 = new SuperMechant("Joe", 0);
 		assertEquals(false, superMec1.decimerLeMonde());
 	}
 
@@ -85,7 +75,7 @@ public class SuperMechantTest {
 
 	@Test
 	public void testEquals() {
-		SuperMechant thanos2 = new SuperMechant("thanos",0);
+		SuperMechant thanos2 = new SuperMechant("thanos", 0);
 		thanos2.setNbPierresInfini(3);
 		Assert.assertEquals(thanos, thanos2);
 		Assert.assertNotNull(thanos);
@@ -111,7 +101,7 @@ public class SuperMechantTest {
 		thanos.ajouterPierreInfini("Pizza");
 		assertEquals(nbPierre, thanos.getNbPierresInfini());
 	}
-	
+
 	@Test
 	public void testPlanete() {
 		Planete p = new Planete("toto");
@@ -122,18 +112,19 @@ public class SuperMechantTest {
 		assertEquals(p2, thanos.getPlaneteAcombattre());
 		thanos.supprimerPlaneteAcombattre();
 		assertEquals(null, thanos.getPlaneteAcombattre());
-		
+
 	}
+
 	@Test
 	public void testEqual() {
 		SuperMechant m = null;
 		assertEquals(false, thanos.equals(m));
-		SuperMechant twin = new SuperMechant(thanos.getNomMechant(),thanos.getNbPierresInfini());
+		SuperMechant twin = new SuperMechant(thanos.getNomMechant(), thanos.getNbPierresInfini());
 		assertEquals(true, thanos.equals(twin));
-		SuperMechant notwin = new SuperMechant(thanos.getNomMechant(),thanos.getNbPierresInfini()+1);
+		SuperMechant notwin = new SuperMechant(thanos.getNomMechant(), thanos.getNbPierresInfini() + 1);
 		assertEquals(false, thanos.equals(notwin));
 	}
-	
+
 	/**
 	 * Supprime les engagements
 	 *
